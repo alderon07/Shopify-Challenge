@@ -1,7 +1,7 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { ProductDto } from './dto';
+import { ProductDto, UpdateProductDto } from './dto';
 
 @Injectable()
 export class ProductService {
@@ -27,7 +27,7 @@ export class ProductService {
         } catch (error) {
             if(error instanceof PrismaClientKnownRequestError){
                 // tried to create a new record with unique key
-                if(error.code === 'P2002'){
+                if(error.code === 'P2001'){
                     throw new ForbiddenException(
                         'Duplicate product name',
                     );
@@ -38,15 +38,67 @@ export class ProductService {
         }
     }
 
-    async updateProduct(){
-    return "Product Updated"
+    async updateProduct(id: number, dto: UpdateProductDto) {
+        try {
+            const product = this.prisma.product.update({
+                where: {
+                    id: id,
+                },
+                data: {
+                    name: dto.name,
+                    description: dto.name,
+                    price: dto.price,
+                },
+            })
+            return product;
+        } catch (error) {
+            if(error instanceof PrismaClientKnownRequestError){
+                if(error.code === "P2001"){
+                    throw new ForbiddenException(
+                        'Product does not exist',
+                    );
+                }
+            }
+            throw error;
+        }
     }
 
-    async deleteProduct(){
-        return "Product deleted"
+    async deleteProduct(id: number){
+        try {
+            const product = await this.prisma.product.delete({
+                where: {
+                    id,
+                }
+            })
+            return product;
+        } catch (error) {
+            if(error instanceof PrismaClientKnownRequestError){
+                if(error.code === "P2025"){
+                    throw new ForbiddenException(
+                        "Product not found. So, we cannot perform the deletion."
+                    )
+                }
+            }
+            console.log(error)
+            throw error
+        }
     }
 
-    async getProduct(){
-        return "Product returned"
+    async getProduct(id: number){
+        try {
+            const product = await this.prisma.product.findUnique({
+                where: {
+                    id,
+                }
+            })          
+            console.log(product)
+            return product;
+        } catch (error) {
+            if(error instanceof PrismaClientKnownRequestError){
+                throw error
+            }
+            console.log(error)
+            throw error
+        }   
     }
 }

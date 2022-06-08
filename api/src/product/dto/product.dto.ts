@@ -1,4 +1,4 @@
-import { IsString, IsPositive, IsCurrency, IsOptional, IsNotEmpty, Min, IsNumberString } from 'class-validator';
+import { IsString, IsPositive, IsOptional, IsNotEmpty, IsNumberString } from 'class-validator';
 
 // use pipes to apply data validation on dtos using class-validator
 // and class-transformer
@@ -9,7 +9,7 @@ export class ProductDto {
 
   @IsString()
   @IsOptional()
-  description: string;
+  description?: string;
 
   @IsNumberString()
   @IsNotEmpty()
