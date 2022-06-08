@@ -15,14 +15,14 @@ model Inventory {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  locationId Int
+  productId Int
   quantity Int
 
-  location   Location @relation(fields: [locationId], references: [id])
-  locationId Int
+  location   Location @relation(fields: [locationId], references: [id], onDelete: Cascade)
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 
-  product   Product @relation(fields: [productId], references: [id])
-  productId Int
-
+  @@unique([locationId, productId])
   @@map("inventories")
 }
 
