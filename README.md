@@ -1,3 +1,3 @@
 # Shopify Backend Challenge
-## api
-## frontend
+## API
+## FRONTEND

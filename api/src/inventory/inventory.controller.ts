@@ -5,7 +5,7 @@ import { InventoryService } from "./inventory.service";
 export class InventoryController {
     constructor(private inventoryService: InventoryService) {}
 
-    @Get('getInventory')
+    @Get()
     getInventory(){
         return this.inventoryService.getInventory()
     }
