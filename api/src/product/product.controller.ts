@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Post, Param, ParseIntPipe } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Post, Param, ParseIntPipe, Put } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { ProductDto, UpdateProductDto } from './dto';
 
@@ -6,7 +6,7 @@ import { ProductDto, UpdateProductDto } from './dto';
 export class ProductController {
     constructor(private productService: ProductService) {}
 
-    @Post('createProduct')
+    @Post('create')
     creatProduct(@Body() dto: ProductDto){
         console.log({
             dto,
@@ -14,7 +14,7 @@ export class ProductController {
         return this.productService.createProduct(dto)
     }
 
-    @Post(':id')
+    @Put(':id')
     updateProduct(@Param('id', ParseIntPipe) id: number, @Body() dto: UpdateProductDto){
         return this.productService.updateProduct(id, dto)
     }
@@ -24,10 +24,9 @@ export class ProductController {
         return this.productService.deleteProduct(id)
     }
 
-    @Get(':id')
-    getProduct(@Param('id', ParseIntPipe) id: number){
-        console.log(id)
-        return this.productService.getProduct(id)
+    @Get()
+    getAll(){
+        return this.productService.getAllProducts()
     }
 
 }

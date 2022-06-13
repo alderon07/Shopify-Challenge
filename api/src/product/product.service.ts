@@ -46,7 +46,7 @@ export class ProductService {
                 },
                 data: {
                     name: dto.name,
-                    description: dto.name,
+                    description: dto.description,
                     price: dto.price,
                 },
             })
@@ -84,20 +84,22 @@ export class ProductService {
         }
     }
 
-    async getProduct(id: number){
+    async getAllProducts(){
         try {
-            const product = await this.prisma.product.findUnique({
-                where: {
-                    id,
+            const products = await this.prisma.product.findMany({
+                select: {
+                    id: true,
+                    name: true,
+                    description: true,
+                    price: true,
                 }
-            })          
-            console.log(product)
-            return product;
+            })
+            return products;
         } catch (error) {
             if(error instanceof PrismaClientKnownRequestError){
                 throw error
             }
-            console.log(error)
+            // console.log(error)
             throw error
         }   
     }

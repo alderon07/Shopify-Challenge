@@ -1,15 +1,19 @@
-import { IsNotEmpty, IsNumberString, IsOptional, IsString } from "class-validator";
+import { IsNumberString, IsString, ValidateIf, ValidationOptions } from "class-validator";
 
 export class UpdateProductDto {
-    @IsOptional()
     @IsString()
-    name?: string;
+    name: string;
 
     @IsOptional()
     @IsString()
     description?: string;
 
     @IsOptional()
-    @IsNumberString()
     price?: number;
 }
+
+function IsOptional(validationOptions?: ValidationOptions) {
+    return ValidateIf((obj, value) => {
+      return value !== null && value !== undefined && value !== '';
+    }, validationOptions);
+  }

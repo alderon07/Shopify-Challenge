@@ -7,7 +7,6 @@ export class InventoryService {
 
     async getInventory(){
         const inventory = await this.prisma.inventory.findMany({
-            where: {locationId: 2},
             select:{
                 locationId: true,
                 quantity: true,
@@ -33,15 +32,15 @@ export class InventoryService {
 
             }
         })
-        const products = inventory.flatMap((value) => (
-            {
-                quantity: value.quantity,
-                name: value.product.name,
-                description: value.product.description,
-                price: value.product.price
-            }
-        ))
+        // const products = inventory.flatMap((value) => (
+        //     {
+        //         quantity: value.quantity,
+        //         name: value.product.name,
+        //         description: value.product.description,
+        //         price: value.product.price
+        //     }
+        // ))
 
-        return products;
+        return inventory;
     }
 }
