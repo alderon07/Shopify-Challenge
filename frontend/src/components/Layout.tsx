@@ -7,25 +7,31 @@ export default function Layout() {
         <h1 className="self-center font-bold text-3xl">Welcome!</h1>
         <ul className="flex flex-row flex-wrap self-center space-x-10">
           <li>
-            <Link to="/products">
-              <button className="rounded-md border-4 px-3 py-1">Product</button>
+            <Link to="api/products/create">
+              <button className="rounded-md border-4 px-3 py-1">Add Product</button>
             </Link>
           </li>
           <li>
-            <Link to="/locations">
-              <button className="rounded-md border-4 px-3 py-1">Location</button>
+            <Link to="api/location">
+              <button className="rounded-md border-4 px-3 py-1">Add Location</button>
             </Link>
           </li>
           <li>
-            <Link to="/add-product-to-location">
+            <Link to="api/add-product-to-location">
               <button className="rounded-md border-4 px-3 py-1">Add Product to Location</button>
             </Link>
           </li>
           <li>
-            <Link to="/inventory">
+            <Link to="api/products">
+              <button className="rounded-md border-4 px-3 py-1">Products</button>
+            </Link>
+          </li>
+          <li>
+            <Link to="api/inventory">
               <button className="rounded-md border-4 px-3 py-1">Inventory</button>
             </Link>
           </li>
+
         </ul>
       </div>
 

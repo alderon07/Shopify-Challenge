@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function Location() {
-  const [address, setAddress] = useState("");
-  const [state, setState] = useState("");
-  const [city, setCity] = useState("");
-  const [zipcode, setZipcode] = useState("");
+  const [address, setAddress] = useState<string>("");
+  const [state, setState] = useState<string>("");
+  const [city, setCity] = useState<string>("");
+  const [zipcode, setZipcode] = useState<string>("");
 
   const handleSubmit = () => {
     alert("Product was added");

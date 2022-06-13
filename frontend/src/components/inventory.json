@@ -1,0 +1,77 @@
+[
+	{
+		"locationId": 2,
+		"quantity": 5,
+		"product": {
+			"name": "Bananas",
+			"description": null,
+			"price": "1.99"
+		},
+		"location": {
+			"address": "10 Shephard Ct",
+			"city": "Bayshore",
+			"state": "NY",
+			"zipCode": 11782
+		}
+	},
+	{
+		"locationId": 1,
+		"quantity": 15,
+		"product": {
+			"name": "Apples",
+			"description": "",
+			"price": "1.95"
+		},
+		"location": {
+			"address": "58 Drayton Avenue",
+			"city": "Bayshore",
+			"state": "NY",
+			"zipCode": 11706
+		}
+	},
+	{
+		"locationId": 2,
+		"quantity": 10,
+		"product": {
+			"name": "Pineapples",
+			"description": "It's a fruit",
+			"price": "350"
+		},
+		"location": {
+			"address": "10 Shephard Ct",
+			"city": "Bayshore",
+			"state": "NY",
+			"zipCode": 11782
+		}
+	},
+	{
+		"locationId": 1,
+		"quantity": 20,
+		"product": {
+			"name": "Bananas",
+			"description": null,
+			"price": "1.99"
+		},
+		"location": {
+			"address": "58 Drayton Avenue",
+			"city": "Bayshore",
+			"state": "NY",
+			"zipCode": 11706
+		}
+	},
+	{
+		"locationId": 2,
+		"quantity": 40,
+		"product": {
+			"name": "Oranges",
+			"description": null,
+			"price": "2.99"
+		},
+		"location": {
+			"address": "10 Shephard Ct",
+			"city": "Bayshore",
+			"state": "NY",
+			"zipCode": 11782
+		}
+	}
+]

@@ -7,16 +7,18 @@ import Layout from "./components/Layout";
 import Location from "./components/Location";
 import Inventory from "./components/Inventory";
 import ProdToLoc from "./components/ProdToLoc";
+import Products from "./components/Products";
 
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={ <Layout /> }>
-          <Route path="/products" element={<Product />} />
-          <Route path="/locations" element={<Location />} />
-          <Route path="/add-product-to-location" element={<ProdToLoc />} />
-          <Route path="/inventory" element={<Inventory />} />
+          <Route path="api/location" element={<Location />} />
+          <Route path="api/add-product-to-location" element={<ProdToLoc />} />
+          <Route path="api/products/create" element={<Product />} />
+          <Route path="api/products" element={<Products />}/>
+          <Route path="api/inventory" element={<Inventory />} />
         </Route>
       </Routes>
     </div>
