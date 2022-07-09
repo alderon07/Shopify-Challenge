@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 export default function Product() {
   const [name, setName] = useState<string>("");
@@ -7,37 +8,19 @@ export default function Product() {
 
   const url = `${process.env.REACT_APP_URL}/products/create`
 
-  const handleCreate = () => {
-    const requestOptions = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: JSON.stringify( 
-        {
-          name: name,
-          description: description,
-          price: price,
-        }
-      )
-    }
+  const handleCreate = async () => {
+    if(name === "" || price === "") return
 
-    const postProduct = async () => {
-      try {
-        const response = await fetch(url, requestOptions)
-        if(!response.ok){
-          throw new Error(response.statusText)
-        }
-  
-        console.log(response)
-        
-      } catch (error) {
-        console.log(error)
-      }
+    const data = {
+      "name": name,
+      "description": description,
+      "price": price,
     }
-
-    void postProduct()
+    try {
+      const response = await axios.post(url, data)
+    } catch (error) {
+      console.error("Response error!", error)
+    }
   };
 
   return (
